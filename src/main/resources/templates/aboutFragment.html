@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is about page</h1>
+    <!-- Using Fragment  : Fragment is like a function, we can call that function and we will use that function to manage our layouts -->
+     <!-- file name :: fragment name   -->
+      <!-- ~{::section}  => It is a way to refer markup language  -->
+    <!-- <div class="host-tag"  th:insert="~{base :: parent(~{::section})}"> -->
+    <div class="host-tag"  th:insert="${isLogin} ? ~{baseFragment :: parent(~{::section})} : ~{base :: test(~{::#not_logged_in})}">
+        <section>
+            <h1>User is logged in</h1>
+            <h2>This is dynamic content</h2>
+            <button>Click on Dynamic content</button>
+        </section>
+
+        <section id="not_logged_in">
+            <h1>User Not Logged In</h1>
+        </section>
+    </div>
+</body>
+</html>  

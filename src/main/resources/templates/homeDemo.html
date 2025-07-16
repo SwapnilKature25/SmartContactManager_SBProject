@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Use proper Thymeleaf syntax -->
+    <link rel="stylesheet" data-th-href="@{/css/output.css}">
+    <!-- below link will use to access tailwind.css classes here  -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- flowbite -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+
+    <!-- <style>
+        .container{
+            margin: auto; 
+            width: 50%;
+            padding: 30px;
+            background: #e2e2e2;
+        }
+    </style> -->
+</head>
+<body>
+    <div class="bg-gray-200 w-1/2 p-4 flex flex-col justify-center items-center space-y-3 mx-auto">
+        <h1 class="text-2xl font-bold" th:text="${name}">Welcome to Home page</h1>
+        <p class="text-xl text-gray-700">Youtube Channel : <span th:text="${Yt}"></span></p>        
+        <p class="text-xl text-gray-700">Github link : <span th:text="${github}"></span></p>  
+        <!-- instead of th:href we can use data-th-href -->
+        <!-- <a th:href="${github}">Click here to open</a> -->
+    
+        <a th:href="${github}">Click here to open</a>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora quisquam maiores vel nisi nam iusto recusandae! Impedit dolorem natus inventore!</p>
+        
+        <div>
+            <button class="px-3 py-3 rounded bg-blue-700 text-white hover:bg-blue-600">Click here</button>
+        </div>
+    </div>
+
+
+    <!-- flow bite content -->
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+</body>
+</html>
