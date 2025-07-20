@@ -1,8 +1,12 @@
 console.log("script loaded");
 
+// change theme work
 let currentTheme=getTheme();
-// initial 
-changeTheme();
+
+// it will call function when documents will be loaded
+document.addEventListener('DOMContentLoaded', ()=>{
+    changeTheme();
+})
 
 // TODO:
 function changeTheme(){
@@ -52,3 +56,5 @@ function getTheme(){
     let theme = localStorage.getItem("theme");
     return theme ? theme : "light";
 }
+
+// end of change theme work
