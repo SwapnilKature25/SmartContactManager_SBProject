@@ -3,6 +3,7 @@ package com.scm.main.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import com.scm.main.helpers.MessageType;
 import com.scm.main.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 
 @Controller
@@ -73,13 +75,17 @@ public class PageController {
     // processing register ( Signup page)
     @RequestMapping(value="/do-Register", method=RequestMethod.POST)
     //Automatically userForm object will be created because of @ModelAttribute and the object fields will be mstching with userForm fields so it will be inserted into it.
-    public String processRegister(@ModelAttribute UserForm userForm, HttpSession session){
+    public String processRegister(@Valid @ModelAttribute UserForm userForm,BindingResult  rBindingResult,HttpSession session){
         System.out.println("processing registration");
         // fetch form data
         // userForm
         System.out.println(userForm);
         // validate form data
         // Todo 
+        if(rBindingResult.hasErrors()){
+            return "register";
+        }
+
 
         // save to database
         // UserService

@@ -7,14 +7,14 @@ import jakarta.servlet.http.HttpSession;
 // to remove signup message
 @Component
 public class SessionHelper {
-    private static void removeMessage(){
+        public void removeMessage(){
         try{
             System.out.println("Removing message from Session");
             HttpSession session=((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest().getSession();
             session.removeAttribute("message");
         }
         catch(Exception e){
-            System.out.println("Error in SessionHelper : "+e);
+            System.err.println("Error in SessionHelper : "+e);
             e.printStackTrace();
         }
     }
