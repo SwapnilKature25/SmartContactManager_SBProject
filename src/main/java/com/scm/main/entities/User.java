@@ -6,7 +6,11 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -14,8 +18,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.Builder;
 
 
+@Builder  /* for creating User in ProcessRegister() in pageController  */
 @Entity
 @Getter
 @Setter
@@ -24,6 +30,7 @@ import lombok.Setter;
 @Table(name="users")
 public class User {
     @Id
+    @Column(name="user_id")
     private String userId;
     @Column(name="user_name", nullable=false)
     private String name;
@@ -40,6 +47,7 @@ public class User {
     private boolean emailVweified=false;
     private boolean phoneVweified=false;
 
+    @Enumerated(value=EnumType.STRING)
     // Signup from Google, Self, Facebook, Twitter, LinkedIn, Github
     private Providers provider=Providers.SELF;
     private String providerUserId;
