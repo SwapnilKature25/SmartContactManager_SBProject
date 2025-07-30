@@ -60,8 +60,8 @@ public class UserServiceImpl implements UserService{
         user2.setPhoneNumber(user.getPhoneNumber());
         user2.setProfilePic(user.getProfilePic());
         user2.setEnabled(user.isEnabled());
-        user2.setEmailVweified(user.isEmailVweified());
-        user2.setPhoneVweified(user.isPhoneVweified());
+        user2.setEmailVerified(user.isEmailVerified());
+        user2.setPhoneVerified(user.isPhoneVerified());
         user2.setProvider(user.getProvider());
         user2.setProviderUserId(user.getProviderUserId());
 

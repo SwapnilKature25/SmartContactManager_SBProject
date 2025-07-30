@@ -1,6 +1,7 @@
 package com.scm.main.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,8 +23,19 @@ import jakarta.validation.Valid;
 @Controller
 public class PageController {
 
+    private final PasswordEncoder passwordEncoder;
+
     @Autowired
     private UserService userService;
+
+    PageController(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    @GetMapping("/")
+    public String index(){
+        return "redirect:/home";
+    }
 
     @RequestMapping("/home")
     public String home(Model model){
@@ -102,7 +114,9 @@ public class PageController {
         User user=new User();
         user.setName(userForm.getName());
         user.setEmail(userForm.getEmail());
-        user.setPassword(userForm.getPassword());
+        user.setEnabled(true);      // ✔ This allows the user to log in after registering
+        // user.setPassword(userForm.getPassword());
+        user.setPassword(passwordEncoder.encode(userForm.getPassword()));
         user.setAbout(userForm.getAbout());
         user.setPhoneNumber(userForm.getPhoneNumber());
         user.setProfilePic("https://media.istockphoto.com/id/1393750072/vector/flat-white-icon-man-for-web-design-silhouette-flat-illustration-vector-illustration-stock.jpg?s=1024x1024&w=is&k=20&c=r--oPfS14d-ybe3adW-c_oy6q1tCz1c16SN8h5EdoKk=");
@@ -118,7 +132,8 @@ public class PageController {
         session.setAttribute("message",message);
 
         // redirection to login page
-        return "redirect:/register";
+        // return "redirect:/register";  // This is wrong because after registration you want the user to go to login page, not again to register.
+        return "redirect:/login";
     }
 
     
