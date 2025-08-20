@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is a servicesbout page</h1>
+    <!-- Using Fragment -->
+    <!-- ~{::section}  => It is a way to refer markup language  -->
+    <div th:replace="~{baseFragment :: parent(~{::.second_content})}">
+        <section id="main_content">
+            <h1>This is Dynamic services passed to base parent</h1>
+        </section>
+        <section class="second_content">
+            <h1>This is Dynamic services passed to base parent from second content</h1>
+        </section>
+    </div>
+</body>
+</html> 
